@@ -119,6 +119,7 @@ def list_entries(dataset, sliced=False, slice_val = 0):
     
     if sliced == True:    
         i = 0
+        print(f'length is {len(event_id_list)}')
         for element in event_id_list:
             if i > slice_val:
                 break;

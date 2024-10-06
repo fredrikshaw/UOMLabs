@@ -95,9 +95,11 @@ def histogram_plot(MC_frame, variable, bins, name, scaling, xlims=[], plot_fig =
         else:
             plt.close()
         # return the heights of each bin for data and MC
-        data_heights = heights
+        if (isinstance(dataFrame,pd.core.frame.DataFrame) and plot_data == True):
+            data_heights = heights
 
-        return MC_heights, data_heights
+            return MC_heights, data_heights
+        return MC_heights
     
     
 ## Easter Egg
