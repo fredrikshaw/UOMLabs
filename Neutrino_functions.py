@@ -98,7 +98,7 @@ def histogram_plot(MC_frame, variable, bins, name, scaling, xlims=[], plot_fig =
         if (isinstance(dataFrame,pd.core.frame.DataFrame) and plot_data == True):
             data_heights = heights
 
-            return MC_heights, data_heights
+            return MC_heights, data_heights, UNC
         return MC_heights
     
     
