@@ -99,7 +99,7 @@ def histogram_plot(MC_frame, variable, bins, name, scaling, xlims=[], plot_fig =
             data_heights = heights
 
             return MC_heights, data_heights, UNC
-        return MC_heights
+        return MC_heights, UNC
     
     
 ## Easter Egg
