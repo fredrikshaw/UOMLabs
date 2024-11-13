@@ -6,7 +6,7 @@ import pandas as pd
 #log_scale=logscale, labels = labels
 
 
-def histogram_plot(MC_frame, variable, bins, name, scaling, xlims=[], plot_fig = True, plot_data = False, logscale = None, dataFrame = None, Stat_func = None):
+def histogram_plot(MC_frame, variable, bins, name, scaling, xlims=[], plot_fig = True, plot_data = False, logscale = None, dataFrame = None, Stat_func = None, data_proba = []):
     """
     MC_frame: pandas dataframe - MC dataframe
     variable: string - name of the variable
@@ -57,7 +57,10 @@ def histogram_plot(MC_frame, variable, bins, name, scaling, xlims=[], plot_fig =
     
         if (isinstance(dataFrame,pd.core.frame.DataFrame) and plot_data == True):
             fig_data = plt.figure(figsize=(15,10))
-            Data_fig = sns.histplot(data=dataFrame, x=variable, bins=bins, binrange=xlims, legend = False)
+            if len(data_proba) == 0:
+                Data_fig = sns.histplot(data=dataFrame, x=variable, bins=bins, binrange=xlims, legend = False)
+            else:
+                Data_fig = sns.histplot(data=dataFrame, x=variable, weights=data_proba, bins=bins, binrange=xlims, legend = False)
             bars = Data_fig.patches
         
             heights = [patch.get_height() for patch in bars]
